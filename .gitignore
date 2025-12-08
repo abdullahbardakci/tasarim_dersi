@@ -1,0 +1,5 @@
+.venv/
+maps/
+__pycache__/
+relevant_data/
+raw_data/
