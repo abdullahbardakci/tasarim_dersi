@@ -1,3 +1,5 @@
+# Visualizes the grid of unique latitude and longitude points from a master CSV file using Folium.
+
 import pandas as pd
 import folium
 import math

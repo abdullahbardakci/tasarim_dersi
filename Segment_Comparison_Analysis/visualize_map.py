@@ -1,10 +1,12 @@
+# This script generates an interactive map visualizing traffic data for specified road segments.
+
 import pandas as pd
 import folium
 import os
 import statistics
 from main import ROAD_SEGMENTS
 
-SEGMENT_KEY = 'avcilar'  
+SEGMENT_KEY = 'mecidiyekoy_d100'
 
 def create_map_for_segment(segment_key):
     
@@ -20,7 +22,7 @@ def create_map_for_segment(segment_key):
         print(f"No grid points for the segment")
         return None
     
-    data_folder = 'relevant_data'
+    data_folder = 'Season_Comparison/season_baseline_data'
     csv_path = os.path.join(data_folder, output_filename)
     
     try:
@@ -65,6 +67,15 @@ def create_map_for_segment(segment_key):
         zoom_start=14,
         tiles='OpenStreetMap'
     )
+    
+    if 'road_geometry' in segment:
+        folium.PolyLine(
+            locations=segment['road_geometry'],
+            color='blue',
+            weight=4,
+            opacity=0.8,
+            tooltip='Target Road Segment'
+        ).add_to(m)
     
     for lat, lon in grid_points:
         square_corners = [
@@ -165,7 +176,7 @@ def create_map_for_segment(segment_key):
     '''
     m.get_root().html.add_child(folium.Element(title_html))
     
-    maps_folder = 'maps'
+    maps_folder = 'maps2'
     
     map_filename = output_filename.replace('.csv', '_map.html')
     map_path = os.path.join(maps_folder, map_filename)

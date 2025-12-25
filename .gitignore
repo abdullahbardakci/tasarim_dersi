@@ -1,5 +1,12 @@
 .venv/
 maps/
 __pycache__/
-relevant_data/
+Segment_Comparison_Analysis/relevant_data/
 raw_data/
+Season_Comparison/holiday_data
+Season_Comparison/season_baseline_data
+compare_week.py
+weighted_data
+Season_Comparison/weighted_baseline
+Season_Comparison/weighted_holiday
+Sunum ve Raporda kullanılabilir Grafikler
